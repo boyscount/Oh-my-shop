@@ -1,0 +1,60 @@
+<html>
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+    <body ng-app="myApp" ng-controller="userCtrl">
+
+    <div class="w3-container">
+
+<h1>Angular Hello </h1>
+<ul>
+  <li><b>Name:</b> {{name}}</li>
+  <br>
+  <li><b>Age:</b> {{age}}</li>
+  <br>
+  <li><b>E-mail:</b> {{email}} </li>
+  <br>
+  <li><b>Addres:</b> {{address.street}} , {{address.city}} , {{address.province}} , {{address.postcode}} </li>
+</ul>
+
+<h2  ng-show>Edit Profile </h2>
+<button (click)= toggleEdit()>Edit </button><br><br><br>
+<div *ngIf="isEditable == true">
+<form>
+<div>
+  <label for="name"><b>Name: </b></label>
+  <input type="text" [(ngModel)] ="name" name="name">
+</div>
+<br>
+<div>
+    <label for="age"><b>Age: </b></label>
+    <input type="text" [(ngModel)] ="age" name="age">
+  </div>
+  <br>
+  <div>
+      <label for="email"><b>E-mail: </b></label>
+      <input type="text" [(ngModel)] ="email" name="email">
+    </div>
+
+
+</form>
+</div>
+<h2>Skill </h2>
+<form (submit)="addSkill(skill.value)">
+    <div>
+        <label for="skill">skill</label>
+        <input type="text" #skill placeholder="Add you skill">
+
+      </div>
+  </form>
+  <ul>
+<li style="list-style-type: none" *ngFor="let skill of skills ; let i = index;">{{i+1}}. {{skill}} <button (click)="removeSkill(skill)">X</button> </li>
+
+<h2>Todo List</h2>
+<ul>
+  <li *ngFor="let todo of todoList; " ><b>{{todo.id}}.</b> {{todo.title}}</li>
+</ul>
+
+</ul>
+    </div>
+    </body>
+</html>
